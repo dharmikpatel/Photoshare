@@ -1,0 +1,142 @@
+<html lang="en"><head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">	
+	<title>Responsive Web Mobile - Langing Page</title>
+
+	<!-- Set the viewport width to device width for mobile -->
+  	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!-- Included Bootstrap CSS Files -->
+	<link rel="stylesheet" href="webcam_template/js/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="webcam_template/js/bootstrap/css/bootstrap-responsive.min.css">
+
+	<!-- Google Fonts -->
+	<link href="http://fonts.googleapis.com/css?family=Titillium+Web:400,300" rel="stylesheet" type="text/css">
+	
+	<!-- Css -->	
+	<link rel="stylesheet" href="webcam_template/css/style.css">
+<script type="text/javascript" src="webcam.js"></script>
+</head>
+<body>
+<header style="height: 910px;">
+	
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="header center-block">
+					<h1 class="heading">Upload Photos with webcam</h1>
+					<div id="NewsletterFormContainer">
+						<!--id="myform" enctype="multipart/form-data" method="post" action="webcam_insert.php"-->
+						<form id="myform" enctype="multipart/form-data" method="post" action="webcam_insert.php" class="form" novalidate="novalidate">
+							<input id="mydata" type="hidden" name="mydata" value=""/>
+							<div class="row">
+			
+<div class="col-md-12 service center">
+				<div id="ContactFormContainer">
+					
+						<div class="form-group">
+							<input id="img_name" name="img_name" type="text" placeholder="Name" class="form-control">
+						</div>
+						<div class="form-group">
+							
+						</div>
+						<div class="form-group">
+							<textarea id="img_desc" name="img_desc" placeholder="Description" class="form-control" rows="10"></textarea>
+						</div>
+
+<div class="form-group" font color="red">
+<label >Photo Category :</label> <select name="category" style="background-color: #d3d349;" >
+  <option  value="Personal">Personal</option>
+  <option value="Outdoors">Outdoor</option>
+  <option value="Art">Art</option>
+  <option value="Others">Others</option>
+</select>
+  </div>
+<div class="form-group" >
+<label >Photo Access Level :</label> <select name="access" style="background-color: #d3d349;">
+  <option value="1">Public</option>
+  <option value="0">Private</option>
+  
+</select>
+  </div>
+
+
+					<!--	<div class="form-group">
+							<button id="send" class="btn-large btn btn-inverse btn-block">Upload</button>
+						</div>-->
+
+					
+				
+			</div>
+							</div>
+						</form>
+					</div>
+					
+					<div id="results">Your captured image will appear here...</div>
+	
+	
+	<div id="my_camera"></div>
+	
+	<!-- First, include the Webcam.js JavaScript Library -->
+	
+	
+	<!-- Configure a few settings and attach camera -->
+	<script language="JavaScript">
+		Webcam.set({
+			width: 320,
+			height: 240,
+			image_format: 'jpeg',
+			jpeg_quality: 90
+		});
+		Webcam.attach( '#my_camera' );
+	</script>
+	
+	<!-- A button for taking snaps -->
+	<form>
+		<input type="button" class="btn-large btn btn-inverse btn-block" value="Take Snapshot" onClick="take_snapshot()">
+	</form>
+	
+	<!-- Code to handle taking the snapshot and displaying it locally -->
+	<script language="JavaScript">
+		function take_snapshot() {
+			// take snapshot and get image data
+			Webcam.snap( function(data_uri) {
+			var raw_image_data = data_uri.replace(/^data\:image\/\w+\;base64\,/, '');
+
+        document.getElementById('mydata').value = raw_image_data;
+       
+				// display results in page
+				document.getElementById('results').innerHTML = 
+					'<h2>Here is your image:</h2>' + 
+					'<img src="'+data_uri+'"/>';
+         document.getElementById('myform').submit();
+			} );
+		}
+	</script>
+
+
+
+<!--<form id="myform" enctype="multipart/form-data" method="post" action="webcam_insert.php">
+        
+    </form>-->
+    
+
+				</div>
+			</div>
+		</div>
+	</div>	
+</header>
+
+
+
+<div class="background theme">
+	
+</div>	
+
+
+<script src="webcam_template/js/jquery-2.1.1.min.js"></script>
+<script src="webcam_template/js/bootstrap/js/bootstrap.min.js"></script>
+<script src="webcam_template/js/jquery-validate/assets/js/jquery.validate.min.js"></script>
+<script src="webcam_template/js/script.js"></script>
+
+
+</body></html>
